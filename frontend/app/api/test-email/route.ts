@@ -1,9 +1,10 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
+// Initialize Resend inside the handler to prevent build-time errors if env var is missing
 export async function POST(request: Request) {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     try {
         const { to = 'mauguerrero96@gmail.com' } = await request.json();
 
