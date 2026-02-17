@@ -45,7 +45,10 @@ export default function AdminDashboard() {
       }
 
       if (tournamentsRes.ok) {
-        setRecentTournaments(tournamentsData.tournaments || []);
+        // TEMPORARY: Filter to only show "Torneo Master 32"
+        const allTournaments = tournamentsData.tournaments || [];
+        const filtered = allTournaments.filter((t: any) => t.name === 'Torneo Master 32');
+        setRecentTournaments(filtered);
       }
 
     } catch (error) {
