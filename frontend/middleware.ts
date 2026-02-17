@@ -59,7 +59,7 @@ export async function middleware(request: NextRequest) {
         // Redirect to login if trying to access protected routes
         if (
             pathname.startsWith("/dashboard") ||
-            pathname.startsWith("/admin") ||
+            // pathname.startsWith("/admin") || // TEMPORARY BYPASS
             pathname.startsWith("/developer") ||
             pathname.startsWith("/organizer")
         ) {
@@ -100,12 +100,17 @@ export async function middleware(request: NextRequest) {
 
     // Admin Access
     if (pathname.startsWith("/admin") || pathname.startsWith("/organizer")) {
+        // TEMPORARY BYPASS: Allow everyone
+        return supabaseResponse;
+
+        /* 
         // Allow 'admin', 'developer', and 'organizer' (if legacy role exists)
         if (!["admin", "developer", "organizer"].includes(userRole)) {
             const url = request.nextUrl.clone();
             url.pathname = "/dashboard";
             return NextResponse.redirect(url);
         }
+        */
     }
 
     // Player Access (Dashboard)
