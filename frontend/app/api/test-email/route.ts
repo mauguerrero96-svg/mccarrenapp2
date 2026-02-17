@@ -1,6 +1,8 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic'; // Prevent static generation
+
 // Initialize Resend inside the handler to prevent build-time errors if env var is missing
 export async function POST(request: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
