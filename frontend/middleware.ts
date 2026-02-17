@@ -51,11 +51,9 @@ export async function middleware(request: NextRequest) {
 
     // 1. Unauthenticated Users
     if (!user) {
-        // Redirect root to login
+        // Allow access to landing page (root)
         if (pathname === "/") {
-            const url = request.nextUrl.clone();
-            url.pathname = "/auth/login";
-            return NextResponse.redirect(url);
+            return supabaseResponse;
         }
 
         // Redirect to login if trying to access protected routes

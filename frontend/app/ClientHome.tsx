@@ -1,119 +1,52 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function ClientHome() {
-  const [envStatus, setEnvStatus] = useState({
-    supabaseUrl: false,
-    supabaseKey: false
-  });
-
-  useEffect(() => {
-    setEnvStatus({
-      supabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
-      supabaseKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    });
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-semibold text-gray-900 mb-3">
-            Tournament Management
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col">
+      {/* Navigation */}
+      <nav className="w-full px-6 py-4 flex justify-between items-center max-w-7xl mx-auto">
+        <div className="font-bold text-xl text-slate-800">Mccarren Tournament</div>
+        <Link
+          href="/auth/login"
+          className="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
+        >
+          Login
+        </Link>
+      </nav>
+
+      {/* Hero Section */}
+      <main className="flex-grow flex items-center justify-center px-6">
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+            Professional Tennis Tournament Management
           </h1>
-          <p className="text-gray-600 text-lg">
-            Organize and manage tennis tournaments efficiently
+          <p className="text-lg text-slate-600 mb-10 max-w-2xl mx-auto">
+            The complete solution for organizing brackets, scheduling matches, and managing players efficiently.
           </p>
-        </div>
 
-        {/* Status Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
-          <div className={`p-6 bg-white rounded-lg border shadow-sm ${envStatus.supabaseUrl ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
-            }`}>
-            <div className="flex items-center">
-              <div className={`w-3 h-3 rounded-full mr-3 ${envStatus.supabaseUrl ? 'bg-green-500' : 'bg-red-500'
-                }`}></div>
-              <div>
-                <h3 className="font-medium text-gray-900">Database</h3>
-                <p className="text-sm text-gray-600">
-                  {envStatus.supabaseUrl ? 'Connected' : 'Not configured'}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className={`p-6 bg-white rounded-lg border shadow-sm ${envStatus.supabaseKey ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
-            }`}>
-            <div className="flex items-center">
-              <div className={`w-3 h-3 rounded-full mr-3 ${envStatus.supabaseKey ? 'bg-green-500' : 'bg-red-500'
-                }`}></div>
-              <div>
-                <h3 className="font-medium text-gray-900">API Keys</h3>
-                <p className="text-sm text-gray-600">
-                  {envStatus.supabaseKey ? 'Configured' : 'Not configured'}
-                </p>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/auth/signup"
+              className="px-8 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-semibold shadow-sm"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/auth/login"
+              className="px-8 py-3 bg-white text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors font-medium shadow-sm"
+            >
+              Sign In to Portal
+            </Link>
           </div>
         </div>
+      </main>
 
-        {/* Main Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <a
-            href="/dashboard"
-            className="group p-8 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow border-gray-200 hover:border-gray-300"
-          >
-            <div className="text-center">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-200 transition-colors">
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Dashboard</h3>
-              <p className="text-gray-600 text-sm">Overview and analytics</p>
-            </div>
-          </a>
-
-          <a
-            href="/tournaments"
-            className="group p-8 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow border-gray-200 hover:border-gray-300"
-          >
-            <div className="text-center">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-200 transition-colors">
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Tournaments</h3>
-              <p className="text-gray-600 text-sm">Manage draws & schedules.</p>
-            </div>
-          </a>
-
-          <a
-            href="/test"
-            className="group p-8 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow border-gray-200 hover:border-gray-300"
-          >
-            <div className="text-center">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-200 transition-colors">
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Test Connection</h3>
-              <p className="text-gray-600 text-sm">Verify setup</p>
-            </div>
-          </a>
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-16 pt-8 border-t border-gray-200">
-          <p className="text-gray-500 text-sm">
-            McCarren Tournament Management System
-          </p>
-        </div>
-      </div>
+      {/* Footer */}
+      <footer className="py-8 text-center text-slate-500 text-sm">
+        &copy; {new Date().getFullYear()} Mccarren Tournament. All rights reserved.
+      </footer>
     </div>
   );
 }
