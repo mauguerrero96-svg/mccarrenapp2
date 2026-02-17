@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Tennis Palette */
+    --tennis-green-50: #f0fdf4;
+    --tennis-green-100: #dcfce7;
+    --tennis-green-500: #22c55e;
+    --tennis-green-600: #16a34a;
+    --tennis-green-700: #15803d;
+    --tennis-green-800: #166534;
+    --tennis-green-900: #14532d;
+    
+    --tennis-navy-50: #f0f9ff;
+    --tennis-navy-700: #0369a1;
+    --tennis-navy-800: #075985;
+    --tennis-navy-900: #0c4a6e;
+
+    --court-clay: #c2410c;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-slate-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-tennis-green-700 hover:bg-tennis-green-800 text-white font-medium rounded-lg shadow-sm transition-all duration-200 focus:ring-2 focus:ring-tennis-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    background-color: var(--tennis-green-700);
+  }
+  .btn-primary:hover {
+    background-color: var(--tennis-green-800);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-lg border border-slate-300 shadow-sm transition-all duration-200 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm transition-shadow duration-200;
+  }
+  
+  .card:hover {
+    @apply shadow-md;
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

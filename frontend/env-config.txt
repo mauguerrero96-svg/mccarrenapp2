@@ -1,0 +1,17 @@
+# Configuración de Supabase autohospedado para Mccarren Tournament
+# Crea un archivo llamado .env.local en la carpeta frontend/
+# y copia estas líneas reemplazando con tus claves reales:
+
+NEXT_PUBLIC_SUPABASE_URL="TU_SUPABASE_URL_AQUI"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="TU_ANON_KEY_AQUI"
+SUPABASE_SERVICE_ROLE_KEY="TU_SERVICE_ROLE_KEY_AQUI"
+
+# Para obtener estas claves:
+# 1. Ve al panel de control de tu Supabase autohospedado
+# 2. Ve a Settings > API
+# 3. Copia los valores correspondientes
+
+# IMPORTANTE:
+# - Las comillas "" son obligatorias
+# - No agregues espacios alrededor del =
+# - Las tablas ahora usan nombres con "_mccarren_tournament" al final
