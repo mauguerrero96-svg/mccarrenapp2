@@ -58,7 +58,7 @@ export async function middleware(request: NextRequest) {
 
         // Redirect to login if trying to access protected routes
         if (
-            pathname.startsWith("/dashboard") ||
+            // pathname.startsWith("/dashboard") || // TEMPORARY BYPASS
             // pathname.startsWith("/admin") || // TEMPORARY BYPASS
             pathname.startsWith("/developer") ||
             pathname.startsWith("/organizer")

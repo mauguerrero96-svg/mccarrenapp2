@@ -45,6 +45,12 @@ export default function ClientHome() {
             >
               Admin Portal (Demo)
             </Link>
+            <Link
+              href="/dashboard"
+              className="px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium shadow-sm"
+            >
+              Player Portal (Demo)
+            </Link>
           </div>
         </div>
       </main>
